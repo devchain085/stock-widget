@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Stock Chart</title>
+    <script>
+      // 解析URL参数的函数
+      function getQueryParam(param) {
+        var queryString = window.location.search.substring(1);
+        var queryParams = queryString.split('&');
+        for (var i = 0; i < queryParams.length; i++) {
+          var pair = queryParams[i].split('=');
+          if (decodeURIComponent(pair[0]) == param) {
+            return decodeURIComponent(pair[1]);
+          }
+        }
+        return null;
+      }
+    </script>
+</head>
+<body>
+    <div class="tradingview-widget-container">
+      <div id="tradingview_37b9f"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget(
+      {
+      "width": 980,
+      "height": 610,
+      "symbol": "NASDAQ:" + getQueryParam("symbol"),
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview_37b9f"
+      }
+      );
+      </script>
+    </div>
+</body>
+</html>
