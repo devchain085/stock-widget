@@ -5,36 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dynamic Stock Chart</title>
     <style>
-      /* 设置tradingview-widget-container的宽度和高度为视口的百分比 */
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
       .tradingview-widget-container {
-        width: 100vw; /* 视口宽度的100% */
-        height: 50vh; /* 视口高度的50%，你可以调整这个值来尝试适应不同设备 */
-        overflow: hidden;
+        height: 100vh; /* 使用视口高度 */
+        width: 100vw; /* 使用视口宽度 */
       }
     </style>
 </head>
 <body>
     <div class="tradingview-widget-container">
-      <div id="tradingview_37b9f"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-      <script type="text/javascript">
-      new TradingView.widget(
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js">
       {
-      "autosize": false, // 设置为 false 以使用自定义大小
-      "symbol": "NASDAQ:" + getQueryParam("symbol"),
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_37b9f",
-      "width": "100%",  // 使用百分比定义宽度
-      "height": "100%"  // 使用百分比定义高度
+        "autosize": false,
+        "symbol": "NASDAQ:AAPL",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview-widget-container__widget"
       }
-      );
       </script>
     </div>
 </body>
