@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dynamic Stock Chart</title>
     <style>
+      /* 设置tradingview-widget-container的宽度和高度为视口的百分比 */
       .tradingview-widget-container {
-        width: 100%;
-        height: 350px; /* 初始高度设置为350px，您需要根据需要进行调整 */
-        overflow: hidden; /* 如果需要，隐藏溢出的部分 */
-      }
-
-      /* 媒体查询来处理不同屏幕大小的设备 */
-      @media (min-width: 600px) {
-        .tradingview-widget-container {
-          height: 450px; /* 对于大屏幕，可能需要更高的值 */
-        }
+        width: 100vw; /* 视口宽度的100% */
+        height: 50vh; /* 视口高度的50%，你可以调整这个值来尝试适应不同设备 */
+        overflow: hidden;
       }
     </style>
 </head>
@@ -26,7 +20,7 @@
       <script type="text/javascript">
       new TradingView.widget(
       {
-      "autosize": false, // 设置为 false 可以固定高度
+      "autosize": false, // 设置为 false 以使用自定义大小
       "symbol": "NASDAQ:" + getQueryParam("symbol"),
       "interval": "D",
       "timezone": "Etc/UTC",
@@ -36,7 +30,9 @@
       "toolbar_bg": "#f1f3f6",
       "enable_publishing": false,
       "allow_symbol_change": true,
-      "container_id": "tradingview_37b9f"
+      "container_id": "tradingview_37b9f",
+      "width": "100%",  // 使用百分比定义宽度
+      "height": "100%"  // 使用百分比定义高度
       }
       );
       </script>
