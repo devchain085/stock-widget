@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dynamic Stock Chart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-      // 解析URL参数的函数
-      function getQueryParam(param) {
-        var queryString = window.location.search.substring(1);
-        var queryParams = queryString.split('&');
-        for (var i = 0; i < queryParams.length; i++) {
-          var pair = queryParams[i].split('=');
-          if (decodeURIComponent(pair[0]) == param) {
-            return decodeURIComponent(pair[1]);
-          }
+    <title>Dynamic Stock Chart</title>
+    <style>
+      /* 添加媒体查询以调整不同屏幕尺寸下的图表高度 */
+      @media (max-width: 600px) {
+        .tradingview-widget-container {
+          height: 300px; /* 适合大多数手机屏幕的高度 */
         }
-        return null;
       }
-    </script>
+
+      /* 适应平板电脑或大屏手机 */
+      @media (min-width: 601px) {
+        .tradingview-widget-container {
+          height: 400px; /* 较大设备需要更高的图表 */
+        }
+      }
+      
+      /* 可以继续添加更多的媒体查询以适应更大的屏幕尺寸 */
+    </style>
 </head>
 <body>
-    <div class="tradingview-widget-container" style="width: 100%;">
+    <div class="tradingview-widget-container">
       <div id="tradingview_37b9f"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
       <script type="text/javascript">
